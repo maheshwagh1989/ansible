@@ -1,0 +1,13 @@
+---
+- hosts: 192.168.10.237
+  vars:
+   http_port: 80
+   max_clients: 200
+  remote_user: root
+  tasks:
+   - name: ensure apache is installed
+     yum: name=httpd state=installed
+#   - name: Install php-cli
+#     yum: name=php-cli state=present
+   - name: Ensure Apache Service is started and enabled at boot
+     service: name=httpd state=started enabled=yes
